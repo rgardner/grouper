@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
-  root 'static_pages#home'
-  match '/signin', to: 'users#new', via: 'get'
+  resources :people, only: [:new, :create]
+
+  root 'people#new'
+  match '/groups', to: 'static_pages#home', via: 'get'
 end

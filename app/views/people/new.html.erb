@@ -1,2 +1,19 @@
-<h1>People#new</h1>
-<p>Find me in app/views/people/new.html.erb</p>
+<% provide(:title, 'Sign in') %>
+<h1>Sign in</h1>
+
+<div class="row">
+  <div class="span6 offset3">
+    <%= form_for(@person) do |f| %>
+      <%= render 'shared/error_messages', object: f.object %>
+      <%= f.label :name %>
+      <%= f.text_field :name %>
+
+      <%= f.label :school %>
+      <%= f.text_field :school %>
+
+      <%= f.label :skills %>
+      <%= f.collection_check_boxes(:skills, Skill.all, :id, :name) %>
+
+      <%= f.submit "Sign me in", class: "btn btn-large btn-primary" %>
+    <% end %>
+  </div>
