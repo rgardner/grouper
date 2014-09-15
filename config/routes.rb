@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
-  resources :people, only: [:new, :create]
+  resources :users, only: [:new, :create]
 
-  root 'people#new'
-  match '/groups', to: 'static_pages#home', via: 'get'
+  root 'users#new'
+  match '/groups', to: 'static_pages#index', via: 'get'
 end
