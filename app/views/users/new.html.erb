@@ -1,19 +1,28 @@
 <% provide(:title, 'Sign in') %>
 <h1>Sign in</h1>
 
-<div class="row">
-  <div class="span6 offset3">
-    <%= form_for(@user) do |f| %>
-      <%= render 'shared/error_messages', object: f.object %>
-      <%= f.label :name %>
+<%= form_for(@user, html: {class: "form-horizontal center"}) do |f| %>
+  <%= render 'shared/error_messages', object: f.object %>
+  <div class="form-group">
+    <%= f.label :name %>
+    <div class="col-md-6">
       <%= f.text_field :name %>
-
-      <%= f.label :school %>
-      <%= f.text_field :school %>
-
-      <%= f.label :skills %>
-      <%= f.collection_check_boxes(:skills, Skill.all, :id, :name) %>
-
-      <%= f.submit "Sign me in", class: "btn btn-large btn-primary" %>
-    <% end %>
+    </div>
   </div>
+
+  <div class="form-group">
+    <%= f.label :school %>
+    <div class="col-md-6">
+      <%= f.text_field :school %>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :skills %>
+    <div class="col-md-6">
+      <%= f.collection_check_boxes(:skills, Skill.all, :id, :name) %>
+    </div>
+  </div>
+
+  <%= f.submit "Sign me in", class: "btn btn-large btn-primary" %>
+<% end %>
