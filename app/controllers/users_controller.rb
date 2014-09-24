@@ -6,8 +6,8 @@ class UsersController < ApplicationController
   def create
     @user = User.new(user_params)
     if @user.save
-      flash[:sucess] = "Thanks for signing in #{@user.name}"
-      redirect_to 'static_page#index'
+      flash[:success] = "Thanks for signing in #{@user.name}!"
+      redirect_to groups_path
     else
       render 'new'
     end
