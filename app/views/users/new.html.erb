@@ -1,31 +1,39 @@
 <% provide(:title, 'Sign in') %>
 <h1>Sign in</h1>
 
-<%= form_for(@user, html: {class: "form-horizontal"}) do |f| %>
+<%= form_for(@user, html: {class: 'form-horizontal'}) do |f| %>
   <%= render 'shared/error_messages', object: f.object %>
   <div class="form-group">
-    <%= f.label :name, class: "col-sm-2 control-label" %>
-    <%= f.text_field :name, placeholder: "Your name.", class: "form-control" %>
+    <%= f.label :name, class: 'col-sm-2 control-label' %>
+    <%= f.text_field :name, placeholder: 'Your name.', class: 'form-control' %>
   </div>
 
   <div class="form-group">
-    <%= f.label :school, class: "col-sm-2 control-label" %>
-    <%= f.text_field :school, placeholder: "CAS, Stern, Poly, Tisch, Cooper Union", class: "form-control" %>
+    <%= f.label :school, class: 'col-sm-2 control-label' %>
+    <%= f.text_field :school, placeholder: 'CAS, Stern, Poly, Tisch, Cooper Union', class: 'form-control' %>
   </div>
 
   <div class="form-group">
-    <%= f.label :skills, class: "col-sm-2 control-label" %>
-    <% Skill.all.each do |skill| %>
-      <div class="col-sm-offset-2 col-sm-10">
-        <label class="checkbox-inline">
-          <%= check_box_tag "user[known_skills][]", skill.id %>I know: <%= skill.name %>
-        </label>
-        <label class="checkbox-inline">
-          <%= check_box_tag "user[wanted_skills][]", skill.id %>I want to know: <%= skill.name %>
-        </label>
-      </div>
-    <% end %>
+    <%= f.label :wanted_skills, 'Skills I Want to Know', class: 'col-sm-2 control-label' %>
+    <div class="col-sm-offset-2 col-sm-10">
+      <%= f.collection_check_boxes :wanted_skills, Skill.all, :id, :name do |b| %>
+          <div class="checkbox">
+            <%= b.label { b.check_box + b.text } %>
+          </div>
+      <% end %>
     </div>
+  </div>
 
-  <%= f.submit "Submit", class: "btn btn-large btn-primary" %>
+  <div class="form-group">
+    <%= f.label :known_skills, 'Skills I Know', class: 'col-sm-2 control-label' %>
+    <div class="col-sm-offset-2 col-sm-10">
+      <%= f.collection_check_boxes :known_skills, Skill.all, :id, :name do |b| %>
+          <div class="checkbox">
+            <%= b.label { b.check_box + b.text } %>
+          </div>
+      <% end %>
+    </div>
+  </div>
+
+  <%= f.submit 'Submit', class: 'btn btn-large btn-primary' %>
 <% end %>
