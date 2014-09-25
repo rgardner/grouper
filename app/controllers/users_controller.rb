@@ -4,6 +4,7 @@ class UsersController < ApplicationController
   end
 
   def create
+    print(user_params)
     @user = User.new(user_params)
     if @user.save
       flash[:success] = "Thanks for signing in #{@user.name}!"
@@ -16,6 +17,6 @@ class UsersController < ApplicationController
   private
 
   def user_params
-    params.require(:user).permit(:name, :school, :known_skills, :wanted_skills)
+    params.require(:user).permit(:name, :school, known_skills: [], wanted_skills: [])
   end
 end
