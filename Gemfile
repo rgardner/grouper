@@ -3,7 +3,6 @@ ruby '2.0.0'
 
 gem 'rails', '4.1.5'
 gem 'pg', '0.15.1'
-gem 'bcrypt', '3.1.7'
 
 gem 'autoprefixer-rails'
 gem 'bootstrap-sass', '3.2.0.2'
@@ -15,6 +14,7 @@ gem 'turbolinks', '2.3.0'
 gem 'jbuilder', '2.0'
 
 group :development do
+  gem 'faker', '1.4.3'
   gem 'rubocop', '0.26.0'
   gem 'spring', '1.1.3'
 end
