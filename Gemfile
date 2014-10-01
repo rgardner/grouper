@@ -13,6 +13,8 @@ gem 'jquery-rails', '3.1.2'
 gem 'turbolinks', '2.3.0'
 gem 'jbuilder', '2.0'
 
+gem 'kmeans', '0.1.1', require: %w(kmeans/cluster kmeans/pair kmeans/pearson)
+
 group :development do
   gem 'faker', '1.4.3'
   gem 'rubocop', '0.26.0'
