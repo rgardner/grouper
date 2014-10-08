@@ -40,21 +40,24 @@ function draw_graph(where_to_draw, data_to_draw) {
         "yellowgreen": "#738A05"
   };
 
-  //Here's where to put the data.
   var nodes = [];
+  var links = [];
   for (var row = 0; row < data_to_draw.length; row++) {
-    for (var col = 0; col < data_to_draw[row].length; col++) {
-      nodes[row * data_to_draw.length + col] = {"name": data_to_draw[row][col]};
+    var col;
+    var row_index = row * data_to_draw.length;
+    for (col = 0; col < data_to_draw[row].length; col++) {
+      nodes[row_index + col] = {"name": data_to_draw[row][col]};
+    }
+
+    for (col = 0; col < data_to_draw[row].length; col++) {
+      var other_col;
+      for (other_col = 0; other_col < data_to_draw[row].length; other_col++) {
+        if (other_col == col) continue;
+        links.push({source: nodes[row_index + col],
+                    target: nodes[row_index + other_col]});
+      }
     }
   }
-
-  var links = [{source: nodes[0], target: nodes[1]},
-               {source: nodes[1], target: nodes[0]},
-               {source: nodes[2], target: nodes[3]},
-               {source: nodes[4], target: nodes[2]},
-               {source: nodes[2], target: nodes[3]}
-  ];
-
 
   var vis = d3.select(where_to_draw)
         .append("svg:svg")
