@@ -1,7 +1,7 @@
 # Event attendees.
 class User < ActiveRecord::Base
-  before_save { known_skills.delete_if(&:empty?) }
-  before_save { wanted_skills.delete_if(&:empty?) }
+  before_save { known_skills.delete_if(&:nil?) }
+  before_save { wanted_skills.delete_if(&:nil?) }
   before_save { email.downcase! }
   before_save { school.downcase! }
 

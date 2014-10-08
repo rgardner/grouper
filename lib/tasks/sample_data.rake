@@ -6,13 +6,12 @@ namespace :db do
 end
 
 def make_users
-  50.times do
-    name = Faker::Name.name
-    school = Faker::Company.name
+  30.times do
     known_skills = random_skills(Skill.all.count)
     wanted_skills = random_skills(Skill.all.count)
-    User.create!(name:   name,
-                 school: school,
+    User.create!(name:   Faker::Name.name,
+                 email:  Faker::Internet.email,
+                 school: Faker::Company.name,
                  known_skills:  known_skills,
                  wanted_skills: wanted_skills)
   end
