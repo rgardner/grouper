@@ -1,9 +1,12 @@
-$(document).ready(function() {
-  console.log("Draw graph");
+// JS constants.
+var GRAPH_ID = '#graph';  // the HTML div for d3 to draw in.
 
+// Called when everything is fully loaded.
+$(document).ready(function() {
+  // Load the group data from the empty div.
   data = $('.group_data').data('groups');
   console.log(data);
-  draw_graph("#graph", "undefined");
+  draw_graph(GRAPH_ID, data);
 });
 
 function draw_graph(where_to_draw, data_to_draw) {
@@ -38,12 +41,12 @@ function draw_graph(where_to_draw, data_to_draw) {
   };
 
   //Here's where to put the data.
-  var nodes = [{"name": "Matteo" },
-               {"name": "Daniele"},
-               {"name": "Marco"},
-               {"name": "Lucio"},
-               {"name": "Davide" }
-  ];
+  var nodes = [];
+  for (var row = 0; row < data_to_draw.length; row++) {
+    for (var col = 0; col < data_to_draw[row].length; col++) {
+      nodes[row * data_to_draw.length + col] = {"name": data_to_draw[row][col]};
+    }
+  }
 
   var links = [{source: nodes[0], target: nodes[1]},
                {source: nodes[1], target: nodes[0]},
