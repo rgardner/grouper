@@ -1,11 +1,6 @@
 # Display the groups for a given event.
 class GroupsController < ApplicationController
   def index
-  end
-
-  def group_data
-    respond_to do |format|
-      format.json {}
-    end
+    @groups = Group.create_groups(5)
   end
 end

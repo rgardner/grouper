@@ -1,20 +1,8 @@
-/*$.ajax({*/
-  //type: "GET",
-  //contentType: "application/json; charset=utf-8",
-  //url: '/get_data',
-  //dataType: 'json',
-  //data: "{}",
-  //success: function(received_data) {
-    //var div_where_to_draw = "#graph";
-    //draw_graph(div_where_to_draw, received_data);
-  //},
-  //error: function(result) {
-    //console.log("Error fetching group data.");
-  //}
-//});
-
 $(document).ready(function() {
   console.log("Draw graph");
+
+  data = $('.group_data').data('groups');
+  console.log(data);
   draw_graph("#graph", "undefined");
 });
 

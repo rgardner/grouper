@@ -3,4 +3,5 @@
 
 <div id="graph"></div>
 
-<% javascript_include_tag 'd3.min.js' %>
+<%= content_tag :div, class: "group_data", data: { groups: @groups } do %>
+<% end %>

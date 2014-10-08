@@ -3,5 +3,4 @@ Rails.application.routes.draw do
 
   root 'users#new'
   match '/groups', to: 'groups#index', via: 'get'
-  match '/group_data.json', to: 'groups#get_data', via: 'get'
 end
