@@ -1,28 +1,13 @@
-== README
+# Grouper
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+**This project has been archived and is no longer under active development.**
 
-Things you may want to cover:
+Grouper was a web application for pairing groups of people together based on
+their interests. It was intended to be used at Tech@NYU club events for our
+weekly "After Hours" sessions (like mini-hackathons).
 
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
-
-
-Please feel free to use a different markup language if you do not plan to run
-<tt>rake doc:app</tt>.
+Grouper was a [Ruby on Rails](https://rubyonrails.org/) web app where users
+would enter their interests, which were run then through K-means clustering
+(provided by the [kmeans](https://rubygems.org/gems/kmeans/versions/0.1.1)
+gem) to generate the groups. The results were visualized via
+[D3](https://d3js.org/).
